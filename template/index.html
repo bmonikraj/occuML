@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{% static 'image/logo.png' %}">
+<title>OccuML</title>
+
+<!-- Bootstrap -->
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background:#E4D2AC;">
+<nav class="navbar navbar-default" style="background:#A5987C;">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <a class="navbar-brand" href="#"><img src="{% static 'image/logo.png' %}" style="margin-top:-0.5em;"></a></div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="defaultNavbar1">
+      <ul class="nav navbar-nav">
+        <li class="active"></li>
+        <li></li>
+        <li class="dropdown">
+<ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
+        <li></li>
+        <li class="dropdown">
+<ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center" style="border:solid; border-radius:3em; background:#E4E3D8;">OCCU-ML</h1>
+    </div>
+  </div>
+  <hr>
+</div>
+<div class="container">
+  
+  
+  <div class="row" style="border:solid; border-radius:0.5em; border-color:#585142; background:#A5A49C;">
+    <br><br>
+    <div class="col-sm-offset-1 col-sm-4 text-justify" style="border:solid; border-radius:0.5em; border-color:#585142; background:#A3A2AE;"> 
+    	<h2>Sign Up</h2>
+  	<form>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="Semail" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="Spwd" placeholder="Enter password">
+    </div>
+    
+    <button type="button" class="btn btn-default" onkeypress="registration()" onclick="registration()">Register</button><br>
+    <br>
+  	</form>
+
+    </div>
+    <div class="col-sm-offset-2 col-sm-4 text-justify" style="border:solid; border-radius:0.5em; border-color:#585142; background:#A3A2AE;"> 
+    	<h2>Log In</h2>
+  <form>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="Lemail" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="Lpwd" placeholder="Enter password">
+    </div>
+    
+    <button type="button" class="btn btn-default" onkeypress="login()" onclick="login()">Log In</button><br>
+   <br>
+  </form>
+
+  
+    </div>
+	
+<div class="col-sm-1 col-sm-offset-1">
+  	&nbsp;
+  	
+  </div>
+  <br>
+  </div>
+  <br>
+
+  <div class="row text-center" style="border:thin; border-radius:3em; border-color:#585142; background:#FFFDF2;">
+    <div class="col-md-12"><h5>A web service to collect data of your room from IoT device/sensors in real time and make decision if room is occupied or not.</h5>
+    <h5>Here we are asking for data from the user as it is in development phase!</h5>
+    </div>
+  </div><br>
+ 
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+      
+      <p>Copyright &copy; 2016 &middot; All Rights Reserved &middot; <a href="mailto:bmonikraj@gmail.com" >Monik Raj Behera</a></p>
+      <p><a href="https://www.facebook.com/bmonikraj" target="_blank"><i class="fa fa-facebook-official" style="font-size:36px;color:blue"></i></a>&nbsp;<a href="https://gitlab.com/bmonikraj" target="_blank"><i class="fa fa-gitlab" style="color:black;font-size:36px"></i></a>&nbsp;<a href="https://in.linkedin.com/in/bmonikraj" target="_blank"><i class="fa fa-linkedin-square" style="font-size:36px"></i></a></p>
+    </div>
+  </div>
+  
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+<script type="text/javascript">
+	
+	function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+	function registration() {
+	var email = document.getElementById("Semail").value;
+	var pwd = document.getElementById("Spwd").value;
+	var csrftoken = getCookie('csrftoken');
+	var dataObj = new Object();
+	dataObj.task = "Register";
+	dataObj.email = email;
+	dataObj.pwd = pwd;
+	var dataJSON = "jsonData="+JSON.stringify(dataObj);
+
+	if(email=='' || pwd=='')
+	{
+		alert("Blank data are not acceptable");
+	}
+	else
+	{
+	var ajaxObj = new XMLHttpRequest();
+	ajaxObj.onreadystatechange=function(){
+		if(ajaxObj.readyState==4 && ajaxObj.status==200){
+		    responseResult = ajaxObj.responseText;
+		    if(responseResult=='1')
+		    {
+		    	alert("REGISTERED SUCCESSFULLY");
+		    	document.getElementById("Semail").value = '';
+		    	document.getElementById("Spwd").value='';
+		    }
+		    if(responseResult=='0')
+		    {
+		    	alert("REGISTRATION FAILED");
+		    }
+		    if(responseResult=='-1')
+		    {
+		    	alert("REGISTRATION IS ALREADY DONE");
+		    	document.getElementById("Semail").value = '';
+		    	document.getElementById("Spwd").value='';
+		    }
+		}
+	}
+
+	ajaxObj.open("POST", "/mongo/",true);
+	ajaxObj.setRequestHeader("X-CSRFToken", csrftoken); //Required for django cross site request protection forgery
+	ajaxObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //Reuired for POST method
+	ajaxObj.setRequestHeader("X-Requested-with", "XMLHttpRequest"); //Required for django to understand if ajax method
+	ajaxObj.send(dataJSON);
+	}
+}
+
+	function login() {
+		var email = document.getElementById("Lemail").value;
+	var pwd = document.getElementById("Lpwd").value;
+	var csrftoken = getCookie('csrftoken');
+	var dataObj = new Object();
+	dataObj.task = "Login";
+	dataObj.email = email;
+	dataObj.pwd = pwd;
+	var dataJSON = "jsonData="+JSON.stringify(dataObj);
+
+	if(email=='' || pwd=='')
+	{
+		alert("Blank data are not acceptable");
+	}
+	else
+	{
+	var ajaxObj = new XMLHttpRequest();
+	ajaxObj.onreadystatechange=function(){
+		if(ajaxObj.readyState==4 && ajaxObj.status==200){
+		    responseResult = ajaxObj.responseText;
+		    if(responseResult=='1')
+		    {
+		    	window.open("/result/","_self");
+		    }
+		    else
+		    {
+		    	alert("LOGIN FAILED");
+		    	document.getElementById("Lemail").value = '';
+		    	document.getElementById("Lpwd").value='';
+		    }
+		}
+	}
+
+	ajaxObj.open("POST", "/mongo/",true);
+	ajaxObj.setRequestHeader("X-CSRFToken", csrftoken); //Required for django cross site request protection forgery
+	ajaxObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //Reuired for POST method
+	ajaxObj.setRequestHeader("X-Requested-with", "XMLHttpRequest"); //Required for django to understand if ajax method
+	ajaxObj.send(dataJSON);
+	}
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{% static 'image/logo.png' %}"/>
+<title>OccuML</title>
+
+<!-- Bootstrap -->
+<link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background:#E4D2AC;">
+<nav class="navbar navbar-default" style="background:#A5987C;">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <a class="navbar-brand" href="#"><img src="{% static 'image/logo.png' %}" style="margin-top:-0.5em;"></a></div>
+      <button class="btn" style="position:relative; float:right; margin-top:0.6em;" onkeypress="logout()" onclick="logout()">Log Out</button>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="defaultNavbar1"></div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Decision Machine</h1>
+    </div>
+  </div>
+  <hr>
+</div>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Fill Up the Details</h2>
+  <form>
+    <div class="form-group">
+      <label>Temperature:</label>
+      <input type="number" class="form-control" id="temp" placeholder="Enter temperature in Celcius" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" title="Enter upto two decimal">
+    </div>
+
+    <div class="form-group">
+      <label>Relative Humidity:</label>
+      <input type="number" class="form-control" id="relhu" placeholder="Enter Relative Humidity in %" pattern="[0-9]+([\.,][0-9]+)?" step="0.001" title="Enter upto two decimal">
+    </div>
+    
+    <div class="form-group">
+      <label>Light:</label>
+      <input type="number" class="form-control" id="light" placeholder="Enter Light in Lux" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" title="Enter upto two decimal">
+    </div>
+
+    <div class="form-group">
+      <label>Carbon Dioxide amount:</label>
+      <input type="number" class="form-control" id="co2" placeholder="Enter Carbon Dioxide amount in ppm" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" title="Enter upto two decimal">
+    </div>
+    
+    <div class="form-group">
+      <label>Humidity Ratio:</label>
+      <input type="number" class="form-control" id="humr" placeholder="Enter Humidity ratio in Kg-WaterVapour/Kg-Air" step="0.000000001" title="Enter upto two decimal">
+    </div>
+
+    <button type="button" class="btn btn-default" onkeypress="decisionML('decide')" onclick="decisionML('decide')">Submit</button>
+  </form>
+
+    </div>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div class="row text-center">
+    <div class="col-md-6 col-md-offset-3" id="colID" style="border:solid; border-radius:1em; border-color:black; background:#FFFFFF;"><h2 id="rtext"><strong>Not Decided Yet</strong></h2><img id="limg" src="{% static 'image/load.gif' %}" style="display:none; margin-left:42%;" /></div>
+  </div>
+  
+  <div class="row">
+    <div class="text-center col-md-12"> </div>
+  </div>
+<hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+      
+      <p>Copyright &copy; 2016 &middot; All Rights Reserved &middot; <a href="mailto:bmonikraj@gmail.com" >Monik Raj Behera</a></p>
+      <p><a href="https://www.facebook.com/bmonikraj" target="_blank"><i class="fa fa-facebook-official" style="font-size:36px;color:blue"></i></a>&nbsp;<a href="https://gitlab.com/bmonikraj" target="_blank"><i class="fa fa-gitlab" style="color:black;font-size:36px"></i></a>&nbsp;<a href="https://in.linkedin.com/in/bmonikraj" target="_blank"><i class="fa fa-linkedin-square" style="font-size:36px"></i></a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+<script type="text/javascript">
+  
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+  
+
+  function decisionML(tbd) {
+  var Temperature = document.getElementById("temp").value;
+  var Humidity = document.getElementById("relhu").value;
+  var Light = document.getElementById("light").value;
+  var CO2 = document.getElementById("co2").value;
+  var HumidityRatio = document.getElementById("humr").value;
+  var csrftoken = getCookie('csrftoken');
+  var dataObj = new Object();
+  dataObj.task = tbd;
+  dataObj.Temperature = Temperature;
+  dataObj.Humidity = Humidity;
+  dataObj.Light = Light;
+  dataObj.CO2 = CO2;
+  dataObj.HumidityRatio = HumidityRatio;
+  var colID = document.getElementById("colID");
+  dataObj.Occupancy = colID.style.backgroundColor;
+
+
+  var dataJSON = "jsonData="+JSON.stringify(dataObj);
+
+  if(Temperature=='' || Humidity=='' || HumidityRatio=='' || CO2=='' || Light=='')
+  {
+    alert("Blank data are not acceptable");
+  }
+  else
+  {
+  var ajaxObj = new XMLHttpRequest();
+  ajaxObj.onreadystatechange=function(){
+    if(ajaxObj.readyState==4 && ajaxObj.status==200){
+
+        var rid = document.getElementById("limg");
+        rid.style.display='none';
+        var rid = document.getElementById("rtext");
+        rid.innerHTML='Anything new?';
+        responseResult = ajaxObj.responseText;
+        if(responseResult=='UD'){
+          alert('Machine learnt from the error!');
+        }
+        if(responseResult=='OC'){
+          var rid = document.getElementById("colID");
+          rid.style.backgroundColor = '#FF0000';
+          var rid = document.getElementById("rtext");
+          rid.innerHTML='Occupied<br><button type="button" class="btn btn-default" onkeypress="decisionML(12)" onclick="decisionML(12)">Click if result is wrong!</button><br><button type="button" class="btn" onkeypress="location.reload(true)" onclick="location.reload(true)">New Test</button>';
+        }
+        if(responseResult=='NO'){
+          var rid = document.getElementById("colID");
+          rid.style.backgroundColor = '#00FF00';
+          var rid = document.getElementById("rtext");
+          rid.innerHTML='Not Occupied<br><button type="button" class="btn btn-default" onkeypress="decisionML(12)" onclick="decisionML(12)">Click if result is wrong!</button><br><button type="button" class="btn" onkeypress="location.reload(true)" onclick="location.reload(true)">New Test</button>';
+        }
+    }
+
+
+  }
+
+  if(tbd=='decide')
+  {
+    ajaxObj.open("POST", "/mlearn/",true);
+  }
+  else
+  {
+    ajaxObj.open("POST", "/mongo/",true);
+  }
+  
+  ajaxObj.setRequestHeader("X-CSRFToken", csrftoken); //Required for django cross site request protection forgery
+  ajaxObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded") //Reuired for POST method
+  ajaxObj.setRequestHeader("X-Requested-with", "XMLHttpRequest"); //Required for django to understand if ajax method
+  ajaxObj.send(dataJSON);
+  //----------Snippet for waiting UI-----------------
+  var rid = document.getElementById("colID");
+  rid.style.backgroundColor = '#FFFFFF';
+  var rid = document.getElementById("rtext");
+  rid.innerHTML='';
+  var rid = document.getElementById("limg");
+  rid.style.display='block';
+  //---------------------------------------------
+  }
+}
+
+  function logout(){
+    var csrftoken = getCookie('csrftoken');
+    var ajaxObj = new XMLHttpRequest();
+    ajaxObj.onreadystatechange=function(){
+
+    if(ajaxObj.readyState==4 && ajaxObj.status==200){
+        responseResult = ajaxObj.responseText;
+        if(responseResult=='1')
+        {
+          window.open('/','_self');
+        }
+    }
+  }
+  ajaxObj.open("POST", "/mongo/",true);
+  ajaxObj.setRequestHeader("X-CSRFToken", csrftoken); //Required for django cross site request protection forgery
+  ajaxObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //Reuired for POST method
+  ajaxObj.setRequestHeader("X-Requested-with", "XMLHttpRequest"); //Required for django to understand if ajax method
+  ajaxObj.send("jsonData=logout");
+  }
+  
+
+</script>
+
+</body>
+</html>
